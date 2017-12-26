@@ -1,0 +1,27 @@
+{
+    "name": "grischuksasha/form-validator",
+    "description": "Form validator for PHP",
+    "type": "project",
+    "version": "1.0.0",
+    "require": {
+        "php": ">=5.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sasha Grischuk",
+            "email": "grischuk.alexandr@gmail.com"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "FormValidator\\": "src/"
+        }
+    }
+}
