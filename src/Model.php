@@ -16,20 +16,9 @@ abstract class Model
     const RULE_ARRAY    = 'array';
     const RULE_DEFAULT  = 'default';
 
-    public static function getAllRulesName()
-    {
-        return [
-            self::RULE_REQUIRED => 'Required',
-            self::RULE_EMAIL => 'Email',
-            self::RULE_INTEGER => 'Integer',
-            self::RULE_NUMERIC => 'Numeric',
-            self::RULE_IN => 'In',
-            self::RULE_CUSTOM => 'Custom',
-            self::RULE_STRING => 'String',
-            self::RULE_DEFAULT => 'Default',
-            self::RULE_ARRAY => 'Array',
-        ];
-    }
+    const FILTER_TRIM  = 'filter_trim';
+    const FILTER_STRIP_TAGS  = 'filter_strip_tags';
+    const FILTER_STRIP_DISALLOWED_TAGS  = 'filter_strip_disallowed_tags';
 
     protected $attributes = [];
     protected $errors = [];

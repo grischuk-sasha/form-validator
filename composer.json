@@ -2,7 +2,7 @@
     "name": "grischuksasha/form-validator",
     "description": "Form validator for PHP",
     "type": "project",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "require": {
         "php": ">=5.5"
     },

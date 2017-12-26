@@ -1,4 +1,5 @@
 <?php
+
 namespace FormValidator\Validator\Rules;
 
 class ArrayRule extends AbstractRule implements Rule

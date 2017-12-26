@@ -2,6 +2,10 @@
 namespace FormValidator\Validator;
 
 use FormValidator\Model;
+use FormValidator\Validator\Filters\Filter;
+use FormValidator\Validator\Filters\StripDisallowedTagsFilter;
+use FormValidator\Validator\Filters\StripTagsFilter;
+use FormValidator\Validator\Filters\TrimFilter;
 use FormValidator\Validator\Rules\ArrayRule;
 use FormValidator\Validator\Rules\CustomRule;
 use FormValidator\Validator\Rules\DefaultRule;
@@ -18,7 +22,7 @@ class ModelRuleFactory
     /**
      * @param array $params
      * @param Model $model
-     * @return Rule
+     * @return Rule|Filter
      * @throws \Exception
      */
     public static function create(array $params, Model $model)
@@ -51,8 +55,17 @@ class ModelRuleFactory
 
             case Model::RULE_ARRAY:
                 return new ArrayRule();
+
+            case Model::FILTER_TRIM:
+                return new TrimFilter($model, $params);
+
+            case Model::FILTER_STRIP_TAGS:
+                return new StripTagsFilter($model, $params);
+
+            case Model::FILTER_STRIP_DISALLOWED_TAGS:
+                return new StripDisallowedTagsFilter($model, $params);
         }
 
-        throw new \Exception('Rule was not found.');
+        throw new \Exception('Rule or filter were not found.');
     }
 }
