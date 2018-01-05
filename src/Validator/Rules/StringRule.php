@@ -7,11 +7,27 @@ class StringRule extends AbstractRule implements Rule
 {
     protected $model;
     protected $params;
+    protected $maxLength;
+    protected $minLength;
+    protected $length;
+    protected $attrName;
 
     public function __construct(Model $model, $params)
     {
         $this->model = $model;
         $this->params = $params;
+        $this->attrName = $this->prepareAttrName($params[0]);
+
+        if (isset($params['maxLength']) && is_int($params['maxLength']))
+            $this->maxLength = $params['maxLength'];
+
+        if (isset($params['minLength']) && is_int($params['minLength']))
+            $this->minLength = $params['minLength'];
+
+        if (isset($params['length']) && is_int($params['length']))
+            $this->length = $params['length'];
+
+        $this->setDefaultMessage($this->attrName.' must be a string.');
     }
 
     public function validate($value)
@@ -24,12 +40,22 @@ class StringRule extends AbstractRule implements Rule
 
         $this->model->setAttribute($this->params[0], $value);
 
-        return true;
-    }
+        if ($this->maxLength !== null && strlen($value) > $this->maxLength) {
+            $this->setDefaultMessage($this->attrName.' should contain at most '.$this->maxLength.' characters.');
+            return false;
+        }
 
-    public function getDefaultMessage($attr)
-    {
-        return $this->prepareAttrName($attr).' must be string.';
+        if ($this->minLength !== null && strlen($value) < $this->minLength) {
+            $this->setDefaultMessage($this->attrName.' should contain at least '.$this->minLength.' characters.');
+            return false;
+        }
+
+        if ($this->length !== null && strlen($value) !== $this->length) {
+            $this->setDefaultMessage($this->attrName.' should contain '.$this->length.' characters.');
+            return false;
+        }
+
+        return true;
     }
 
     public function getAllowedTags()
