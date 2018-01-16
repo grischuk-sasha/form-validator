@@ -19,7 +19,7 @@ class PhoneNumberRule extends AbstractRule implements Rule
     {
         preg_match('/\D/', $number, $forbiddenSymbolsArray);
 
-        if ($forbiddenSymbolsArray !== [])
+        if ($forbiddenSymbolsArray === [])
             return false;
 
         return true;
