@@ -3,6 +3,7 @@ namespace FormValidator\Validator;
 
 use FormValidator\Model;
 use FormValidator\Validator\Filters\Filter;
+use FormValidator\Validator\Filters\NormalizePhoneNumber;
 use FormValidator\Validator\Filters\StripDisallowedTagsFilter;
 use FormValidator\Validator\Filters\StripTagsFilter;
 use FormValidator\Validator\Filters\TrimFilter;
@@ -68,6 +69,9 @@ class ModelRuleFactory
 
             case Model::FILTER_STRIP_DISALLOWED_TAGS:
                 return new StripDisallowedTagsFilter($model, $params);
+
+            case Model::FILTER_NORMALIZE_PHONE_NUMBER:
+                return new NormalizePhoneNumber($model, $params);
         }
 
         throw new \Exception('Rule or filter were not found.');

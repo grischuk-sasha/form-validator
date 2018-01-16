@@ -17,9 +17,10 @@ abstract class Model
     const RULE_DEFAULT  = 'default';
     const RULE_PHONE_NUMBER  = 'phone_number';
 
-    const FILTER_TRIM  = 'filter_trim';
-    const FILTER_STRIP_TAGS  = 'filter_strip_tags';
-    const FILTER_STRIP_DISALLOWED_TAGS  = 'filter_strip_disallowed_tags';
+    const FILTER_TRIM  = 'FILTER_TRIM';
+    const FILTER_STRIP_TAGS  = 'FILTER_STRIP_TAGS';
+    const FILTER_STRIP_DISALLOWED_TAGS  = 'FILTER_STRIP_DISALLOWED_TAGS';
+    const FILTER_NORMALIZE_PHONE_NUMBER  = 'FILTER_NORMALIZE_PHONE_NUMBER';
 
     protected $attributes = [];
     protected $errors = [];
