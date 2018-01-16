@@ -13,6 +13,7 @@ use FormValidator\Validator\Rules\EmailRule;
 use FormValidator\Validator\Rules\InRule;
 use FormValidator\Validator\Rules\IntegerRule;
 use FormValidator\Validator\Rules\NumericRule;
+use FormValidator\Validator\Rules\PhoneNumberRule;
 use FormValidator\Validator\Rules\RequiredRule;
 use FormValidator\Validator\Rules\Rule;
 use FormValidator\Validator\Rules\StringRule;
@@ -55,6 +56,9 @@ class ModelRuleFactory
 
             case Model::RULE_ARRAY:
                 return new ArrayRule();
+
+            case Model::RULE_PHONE_NUMBER:
+                return new PhoneNumberRule();
 
             case Model::FILTER_TRIM:
                 return new TrimFilter($model, $params);

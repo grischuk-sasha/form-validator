@@ -15,6 +15,7 @@ abstract class Model
     const RULE_STRING   = 'string';
     const RULE_ARRAY    = 'array';
     const RULE_DEFAULT  = 'default';
+    const RULE_PHONE_NUMBER  = 'phone_number';
 
     const FILTER_TRIM  = 'filter_trim';
     const FILTER_STRIP_TAGS  = 'filter_strip_tags';
