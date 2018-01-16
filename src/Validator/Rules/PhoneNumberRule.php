@@ -7,7 +7,7 @@ class PhoneNumberRule extends AbstractRule implements Rule
     {
         $phoneNormalized = $this->normalizePhoneNumber($value);
 
-        return $this->hasForbiddenSymbols($phoneNormalized);
+        return !$this->hasForbiddenSymbols($phoneNormalized) && $this->hasCorrectLength($phoneNormalized);
     }
 
     public function normalizePhoneNumber($number)
@@ -20,8 +20,18 @@ class PhoneNumberRule extends AbstractRule implements Rule
         preg_match('/\D/', $number, $forbiddenSymbolsArray);
 
         if ($forbiddenSymbolsArray !== [])
-            return true;
+            return false;
 
-        return false;
+        return true;
+    }
+
+    public function hasCorrectLength($number)
+    {
+        $phoneLength = strlen($number);
+
+        if ($phoneLength < 7 || $phoneLength > 15)
+            return false;
+
+        return true;
     }
 }
