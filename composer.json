@@ -13,6 +13,9 @@
             "email": "grischuk.alexandr@gmail.com"
         }
     ],
+    "require-dev": {
+        "phpunit/phpunit": "^6"
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "1.0.x-dev"
