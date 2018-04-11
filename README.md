@@ -59,4 +59,23 @@ class CustomForm extends Form
         return true;
     }
 }
+
+$form = new CustomForm([
+       'field1' => 'my data',
+       'field2' => 'my data',
+       'field3' => 'my data',
+       'field4' => 'my data',
+       'field5' => 'my data',
+       'field6' => 'my data',
+       'field7' => 'my data',
+   ]);
+
+if ($form->validate()) {
+    // success action
+    $attrs = $form->getAttributes();
+
+} else {
+    // fail action
+    $errors = $form->getErrors();
+}
 ```
